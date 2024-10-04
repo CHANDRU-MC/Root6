@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Data | Farming Dashboard</title>
+    <link rel="stylesheet" href="real.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Project Logo">
+        </div>
+        <center>
+        <button class="navbar-toggler" onclick="toggleNavbar()">☰</button>
+        <nav id="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html" data-lang-en="Home" data-lang-ta="முகப்பு" data-lang-hi="होम" data-lang-ml="മുഖം" data-lang-kn="ಮನೆ">Home</a></li>
+                <li><a href="Realtimedata.html" data-lang-en="Real-Time Data" data-lang-ta="நேரடி தரவுகள்" data-lang-hi="वास्तविक समय डेटा" data-lang-ml="റിയൽ-ടൈം ഡാറ്റാ" data-lang-kn="ನಿಖರವಾದ ಸಮಯದ ಡೇಟಾ">Real-Time Data</a></li>
+                <li><a href="weather.html" data-lang-en="Weather" data-lang-ta="வானிலை" data-lang-hi="मौसम" data-lang-ml="ആഹാരം" data-lang-kn="ಹವಾಮಾನ">Weather</a></li>
+                <li><a href="crops.html" data-lang-en="Crops" data-lang-ta="விவசாயம்" data-lang-hi="फसलें" data-lang-ml="വിഭവങ്ങൾ" data-lang-kn="ಬೆಳೆಗಳು">Crops</a></li>
+                <li><a href="water.html" data-lang-en="Water" data-lang-ta="தண்ணீர்" data-lang-hi="पानी" data-lang-ml="വെള്ളം" data-lang-kn="ನೀರು">Water</a></li>
+                <li><a href="soil.html" data-lang-en="Soil" data-lang-ta="மண்" data-lang-hi="मिट्टी" data-lang-ml="മണ്ണ്" data-lang-kn="ಮಣ್ಣು">Soil</a></li>
+                <li><a href="help.html" data-lang-en="Help" data-lang-ta="உதவி" data-lang-hi="मदद" data-lang-ml="സഹായം" data-lang-kn="ಸಹಾಯ">Help</a></li>
+            </ul>
+            <!-- Language Selection Dropdown --> </center>
+            <div class="language-select">
+                <select id="languageSwitcher" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="ta">Tamil</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="kn">Kannada</option>
+                </select>
+            </div>
+        </nav>
+    </header>
+    <center>
+    <!-- Real-Time Data Section -->
+    <main>
+        <section class="real-time-data">
+            <h1 data-lang-en="Real-Time Data Monitoring"
+                data-lang-ta="நேரடி தரவுப் கண்காணிப்பு"
+                data-lang-hi="वास्तविक समय डेटा निगरानी"
+                data-lang-ml="റിയൽ-ടൈം ഡാറ്റാ മോണിറ്ററിംഗ്"
+                data-lang-kn="ರಿಯಲ್-ಟೈಮ್ ಡೇಟಾ ನಿಗಾ">Real-Time Data Monitoring</h1>
+            <p data-lang-en="Track your soil's health with real-time data on NPK levels, pH, and moisture content."
+               data-lang-ta="நேரடி தரவுகளுடன் உங்கள் மண்ணின் ஆரோக்கியத்தை கண்காணிக்கவும், NPK அளவுகள், pH மற்றும் ஈரப்பதம் உள்ளடக்கம்."
+               data-lang-hi="NPK स्तर, pH, और नमी सामग्री पर वास्तविक समय डेटा के साथ अपने मिट्टी की सेहत की निगरानी करें।"
+               data-lang-ml="NPK ലവലുകൾ, pH, ഒപ്പം ഈർപ്പത്തിലുള്ള ഉള്ളടക്കം എന്നിവയുടെ റിയൽ-ടൈം ഡാറ്റാ ഉപയോഗിച്ച് നിങ്ങളുടെ മണ്ണിന്റെ ആരോഗ്യത്തെ ട്രാക്ക് ചെയ്യുക."
+               data-lang-kn="NPK ಮಟ್ಟಗಳು, pH ಮತ್ತು ತೇವಾಂಶದ ವಿಷಯದ ಬಗ್ಗೆ ನಿಖರವಾದ ಸಮಯದ ಡೇಟಾ ಮೂಲಕ ನಿಮ್ಮ ಮಣ್ಣಿನ ಆರೋಗ್ಯವನ್ನು ಹತ್ತಿರದಿಂದ ನೋಡಿ.">Track your soil's health with real-time data on NPK levels, pH, and moisture content.</p>
+            
+            <button class="show-data-button" onclick="toggleData()">Show Data</button>
+            <div id="data-content" class="data-cards" style="display: none;">
+                <div class="data-card">
+                    <h2 data-lang-en="NPK Levels"
+                        data-lang-ta="NPK அளவுகள்"
+                        data-lang-hi="NPK स्तर"
+                        data-lang-ml="NPK ലവലുകൾ"
+                        data-lang-kn="NPK ಮಟ್ಟಗಳು">NPK Levels</h2>
+                    <div class="data-content">
+                        <p>Nitrogen: <span class="data-value" data-lang-en="35%" data-lang-ta="35%" data-lang-hi="35%" data-lang-ml="35%" data-lang-kn="35%">35%</span></p>
+                        <p>Phosphorus: <span class="data-value" data-lang-en="20%" data-lang-ta="20%" data-lang-hi="20%" data-lang-ml="20%" data-lang-kn="20%">20%</span></p>
+                        <p>Potassium: <span class="data-value" data-lang-en="15%" data-lang-ta="15%" data-lang-hi="15%" data-lang-ml="15%" data-lang-kn="15%">15%</span></p>
+                    </div>
+                </div>
+                <div class="data-card">
+                    <h2 data-lang-en="Soil pH"
+                        data-lang-ta="மண் pH"
+                        data-lang-hi="मिट्टी pH"
+                        data-lang-ml="മണ്ണിന്റെ pH"
+                        data-lang-kn="ಮಣ್ಣಿನ pH">Soil pH</h2>
+                    <div class="data-content">
+                        <p>Current pH Level: <span class="data-value" data-lang-en="6.5" data-lang-ta="6.5" data-lang-hi="6.5" data-lang-ml="6.5" data-lang-kn="6.5">6.5</span></p>
+                        <p>Optimal Range: <span class="data-value" data-lang-en="6.0 - 7.0" data-lang-ta="6.0 - 7.0" data-lang-hi="6.0 - 7.0" data-lang-ml="6.0 - 7.0" data-lang-kn="6.0 - 7.0">6.0 - 7.0</span></p>
+                    </div>
+                </div>
+                <div class="data-card">
+                    <h2 data-lang-en="Moisture Content"
+                        data-lang-ta="ஈரப்பதம் உள்ளடக்கம்"
+                        data-lang-hi="नमी सामग्री"
+                        data-lang-ml="ഇറപ്പു ഉള്ളടക്കം"
+                        data-lang-kn="ತೇವಾಂಶ">Moisture Content</h2>
+                    <div class="data-content">
+                        <p>Current Moisture Level: <span class="data-value" data-lang-en="45%" data-lang-ta="45%" data-lang-hi="45%" data-lang-ml="45%" data-lang-kn="45%">45%</span></p>
+                        <p>Recommended Range: <span class="data-value" data-lang-en="40% - 60%" data-lang-ta="40% - 60%" data-lang-hi="40% - 60%" data-lang-ml="40% - 60%" data-lang-kn="40% - 60%">40% - 60%</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</center>
+    
+    <script>
+        function toggleNavbar() {
+            document.getElementById('navbar').classList.toggle('active');
+        }
+
+        function toggleData() {
+            const dataContent = document.getElementById('data-content');
+            dataContent.style.display = (dataContent.style.display === 'none' || dataContent.style.display === '') ? 'flex' : 'none';
+        }
+
+        function changeLanguage() {
+            const language = document.getElementById('languageSwitcher').value;
+            document.querySelectorAll('[data-lang-en]').forEach(el => {
+                el.textContent = el.getAttribute(`data-lang-${language}`);
+            });
+        }
+
+
+        function toggleNavbar() {
+    document.getElementById('navbar').classList.toggle('active');
+}
+
+function toggleData() {
+    const dataContent = document.getElementById('data-content');
+    dataContent.style.display = (dataContent.style.display === 'none' || dataContent.style.display === '') ? 'flex' : 'none';
+}
+
+function changeLanguage() {
+    const language = document.getElementById('languageSwitcher').value;
+    document.querySelectorAll('[data-lang-en]').forEach(el => {
+        el.textContent = el.getAttribute(`data-lang-${language}`);
+    });
+}
+    </script>
+
+    <br><br><br><br>
+
+<footer style="background-color: #2c3e50; color: white; padding: 20px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;">
+      <!-- Logo and About -->
+      <div style="flex: 1; min-width: 250px; text-align: left;">
+       <h3 style="color: white;">ROOT6IX</h3>
+        <p style="margin-top: 10px;">
+          ROOT6IX is committed to improving agricultural practices with real-time data, expert advice, and user-friendly tools tailored for farmers.
+        </p>
+      </div>
+  
+      <!-- Quick Links -->
+      <div style="flex: 1; min-width: 250px; text-align: center;">
+        <h3>Quick Links</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+          <li><a href="soil.html" style="color: white; text-decoration: none;">Soil Improvement</a></li>
+          <li><a href="weather.html" style="color: white; text-decoration: none;">Weather & Location</a></li>
+          <li><a href="crops.html" style="color: white; text-decoration: none;">Crops</a></li>
+          <li><a href="crops.html" style="color: white; text-decoration: none;">Fertilizers</a></li>
+          <li><a href="help.html" style="color: white; text-decoration: none;">Contact Us</a></li>
+         
+        </ul>
+      </div>
+  
+      <!-- Contact Info -->
+      <div style="flex: 1; min-width: 250px; text-align: right;">
+        <h3>Contact Us</h3>
+        <p>Email: support@root6ix.com</p>
+        <p>Phone: 9898989898</p>
+        <p>Address: Coimbatore,Tamilnadu ,India</p>
+        <div style="margin-top: 10px;">
+          <a href="#" style="margin-right: 10px; color: white; text-decoration: none;">Facebook</a>
+          <a href="#" style="margin-right: 10px; color: white; text-decoration: none;">Twitter</a>
+          <a href="#" style="margin-right: 10px; color: white; text-decoration: none;">Instagram</a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Footer Bottom -->
+    <div style="text-align: center; margin-top: 20px; font-size: 14px;">
+      <p>&copy; 2024 ROOT6IX. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+
+</body>
+</html>

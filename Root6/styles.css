@@ -1,0 +1,170 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+}
+
+/* Navbar Styles */
+nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 10px 0;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
+}
+
+/* Navbar Toggler Button */
+.navbar-toggler {
+    display: none; /* Hide the toggler button by default */
+    background-color: #4a773c;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Language Select Styles */
+.language-select {
+    margin-left: 10px;
+}
+
+.language-select select {
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('images/pexels-quang-nguyen-vinh-222549-2132250.jpg') no-repeat center center/cover;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    padding: 10px 20px;
+    background-color: #ffcc00;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #e6b800;
+}
+
+/* Dashboard Section */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 30px 20px;
+    background-color: #f7f7f7;
+}
+
+.dashboard-item {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.dashboard-item h2 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.dashboard-item p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-toggler {
+        display: block; /* Show the toggler button on mobile screens */
+    }
+
+    nav {
+        display: none; /* Hide the nav links by default */
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #333;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav.active {
+        display: flex; /* Show the nav links when toggled */
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .language-select {
+        margin: 10px 0;
+    }
+}

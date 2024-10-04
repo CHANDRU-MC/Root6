@@ -1,0 +1,21 @@
+{
+    "title": "Real-Time Data Monitoring",
+    "description": "Track your soil's health with real-time data on NPK levels, pH, and moisture content.",
+    "npk": "NPK Levels",
+    "nitrogen": "Nitrogen:",
+    "phosphorus": "Phosphorus:",
+    "potassium": "Potassium:",
+    "ph": "Soil pH",
+    "currentPh": "Current pH Level:",
+    "optimalPh": "Optimal Range: 6.0 - 7.0",
+    "moisture": "Moisture Content",
+    "currentMoisture": "Current Moisture Level:",
+    "recommendedMoisture": "Recommended Range: 40% - 60%",
+    "home": "Home",
+    "realtime": "Real-Time Data",
+    "weather": "Weather & Location",
+    "crops": "Crop Suggestions",
+    "irrigation": "Irrigation",
+    "soil": "Soil Analysis",
+    "support": "Support"
+}

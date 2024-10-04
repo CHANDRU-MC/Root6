@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        .navbar {
+            background-color: #000000;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .navbar-toggler {
+            border: none;
+            background: none;
+            color: white;
+            font-size: 24px;
+        }
+
+        .container {
+            margin-top: 50px;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #000000;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #003300;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #000000;
+        }
+
+        .logo h3 {
+            margin: 0;
+            color: white;
+        }
+
+        #navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        .language-select {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            #navbar {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #004d00;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                text-align: center;
+            }
+
+            #navbar.active {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <div class="logo">
+            <h3>ROOT6IX</h3>
+        </div>
+        <button class="navbar-toggler" onclick="toggleNavbar()">☰</button>
+        <nav id="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html" data-lang-en="Home" data-lang-ta="முகப்பு" data-lang-hi="मुखपृष्ठ" data-lang-ml="ഹോം" data-lang-kn="ಮನೆ">Home</a></li>
+                <li><a href="Realtimedata.html" data-lang-en="Real-Time Data" data-lang-ta="நேரடி தரவுகள்" data-lang-hi="रीयल-टाइम डेटा" data-lang-ml="റയൽ-ടൈം ഡാറ്റ" data-lang-kn="ರಿಯಲ್-ಟೈಮ್ ಡೇಟಾ">Real-Time Data</a></li>
+                <li><a href="weather.html" data-lang-en="Weather" data-lang-ta="வானிலை" data-lang-hi="मौसम" data-lang-ml="കാലാവസ്ഥ" data-lang-kn="ಹವಾಮಾನ">Weather</a></li>
+                <li><a href="crops.html" data-lang-en="Crops" data-lang-ta="பயிர்கள்" data-lang-hi="फसल" data-lang-ml="വിളകൾ" data-lang-kn="ಬೆಳೆ">Crops</a></li>
+                <li><a href="water.html" data-lang-en="Water" data-lang-ta="நீர்" data-lang-hi="पानी" data-lang-ml="വെള്ളം" data-lang-kn="ನೀರು">Water&Fertilizer</a></li>
+                <li><a href="soil.html" data-lang-en="Soil" data-lang-ta="மண்" data-lang-hi="मिट्टी" data-lang-ml="മണ്ണ്" data-lang-kn="ಮಣ್ಣು">Soil</a></li>
+                <li><a href="help.html" data-lang-en="Help" data-lang-ta="உதவி" data-lang-hi="सहायता" data-lang-ml="സഹായം" data-lang-kn="ಸಹಾಯ">Help</a></li>
+            </ul>
+        </nav>
+        <!-- Language Selection Dropdown -->
+        <div class="language-select">
+            <select id="languageSwitcher" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="ta">Tamil</option>
+                <option value="hi">Hindi</option>
+                <option value="ml">Malayalam</option>
+                <option value="kn">Kannada</option>
+            </select>
+        </div>
+    </header>
+
+    <!-- Contact Form -->
+    <div class="container">
+        <h2 data-lang-en="Contact Us" data-lang-ta="எங்களை தொடர்பு கொள்ளவும்" data-lang-hi="हमसे संपर्क करें" data-lang-ml="ഞങ്ങളെ ബന്ധപ്പെടുക" data-lang-kn="ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ">Contact Us</h2>
+        <form action="https://api.web3forms.com/submit" method="POST">
+
+            <!-- Replace with your Access Key -->
+            <input type="hidden" name="access_key" value="d50b560b-9e65-4630-9141-243a6fe4d224">
+        
+            <div class="mb-3">
+                <label for="name" class="form-label" data-lang-en="Name" data-lang-ta="பெயர்" data-lang-hi="नाम" data-lang-ml="പേര്" data-lang-kn="ಹೆಸರು">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Your Name">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label" data-lang-en="Email" data-lang-ta="மின்னஞ்சல்" data-lang-hi="ईमेल" data-lang-ml="ഇമെയിൽ" data-lang-kn="ಇಮೇಲ್">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Your Email">
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label" data-lang-en="Message" data-lang-ta="செய்தி" data-lang-hi="संदेश" data-lang-ml="സന്ദേശം" data-lang-kn="ಸಂದೇಶ">Message</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" data-lang-en="Submit" data-lang-ta="சமர்ப்பிக்கவும்" data-lang-hi="जमा करें" data-lang-ml="സമർപ്പിക്കുക" data-lang-kn="ಸಲ್ಲಿಸು">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleNavbar() {
+            var navbar = document.getElementById("navbar");
+            navbar.classList.toggle("active");
+        }
+
+        function changeLanguage() {
+            var selectedLang = document.getElementById("languageSwitcher").value;
+            var elements = document.querySelectorAll("[data-lang-en]");
+
+            elements.forEach(function(element) {
+                var text = element.getAttribute("data-lang-" + selectedLang);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+        }
+    </script>
+
+
+
+<footer style="background-color: #2c3e50; color: white; padding: 20px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;">
+      <!-- Logo and About -->
+      <div style="flex: 1; min-width: 250px; text-align: left;">
+       <h3 style="color: white;">ROOT6IX</h3>
+        <p style="margin-top: 10px;">
+          ROOT6IX is committed to improving agricultural practices with real-time data, expert advice, and user-friendly tools tailored for farmers.
+        </p>
+      </div>
+  
+      <!-- Quick Links -->
+      <div style="flex: 1; min-width: 250px; text-align: center;">
+        <h3>Quick Links</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+          <li><a href="soil.html" style="color: white; text-decoration: none;">Soil Improvement</a></li>
+          <li><a href="weather.html" style="color: white; text-decoration: none;">Weather & Location</a></li>
+          <li><a href="crops.html" style="color: white; text-decoration: none;">Crops</a></li>
+          <li><a href="crops.html" style="color: white; text-decoration: none;">Fertilizers</a></li>
+          <li><a href="help.html" style="color: white; text-decoration: none;">Contact Us</a></li>
+         
+        </ul>
+      </div>
+  
+      <!-- Contact Info -->
+      <div style="flex: 1; min-width: 250px; text-align: right;">
+        <h3>Contact Us</h3>
+        <p>Email: support@root6ix.com</p>
+        <p>Phone: 9898989898</p>
+        <p>Address: Coimbatore,Tamilnadu ,India</p>
+        <div style="margin-top: 10px;">
+          <a href="#" style="margin-right: 10px; color: white; text-decoration: none;">Facebook</a>
+          <a href="#" style="margin-right: 10px; color: white; text-decoration: none;">Twitter</a>
+          <a href="#" style="margin-right: 10px; color: white; text-decoration: none;">Instagram</a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Footer Bottom -->
+    <div style="text-align: center; margin-top: 20px; font-size: 14px;">
+      <p>&copy; 2024 ROOT6IX. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+
+
+</html>

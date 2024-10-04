@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water & Fertilizer Recommendations | ROOT6IX</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Ensure you have a styles.css for general styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #000;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo h3 {
+            margin: 0;
+        }
+        .navbar-toggler {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+        }
+        #navbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        #navbar li {
+            margin: 0 10px;
+        }
+        #navbar a {
+            color: white;
+            text-decoration: none;
+        }
+        #navbar .language-select {
+            margin-left: 20px;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-group select, .form-group button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .button {
+            background-color: #ffcc00;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button-primary {
+            background-color: #4CAF50; /* Green */
+        }
+        .button-secondary {
+            background-color: #2196F3; /* Blue */
+        }
+        .button-danger {
+            background-color: #f44336; /* Red */
+        }
+        #waterRecommendation, #fertilizerRecommendation {
+            margin-top: 20px;
+        }
+        .show {
+            display: block;
+        }
+        .hide {
+            display: none;
+        }
+        @media screen and (max-width: 768px) {
+            .navbar-toggler {
+                display: block;
+            }
+            #navbar {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            #navbar.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h3>ROOT6IX</h3>
+        </div>
+        <button class="navbar-toggler" onclick="toggleNavbar()">☰</button>
+        <nav id="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html" data-lang-en="Home" data-lang-ta="முகப்பு" data-lang-hi="होम" data-lang-ml="മുഖം" data-lang-kn="ಮನೆ">Home</a></li>
+                <li><a href="Realtimedata.html" data-lang-en="Real-Time Data" data-lang-ta="நேரடி தரவுகள்" data-lang-hi="वास्तविक समय डेटा" data-lang-ml="റിയൽ-ടൈം ഡാറ്റാ" data-lang-kn="ನಿಖರವಾದ ಸಮಯದ ಡೇಟಾ">Real-Time Data</a></li>
+                <li><a href="weather.html" data-lang-en="Weather" data-lang-ta="வானிலை" data-lang-hi="मौसम" data-lang-ml="ആഹാരം" data-lang-kn="ಹವಾಮಾನ">Weather</a></li>
+                <li><a href="crops.html" data-lang-en="Crops" data-lang-ta="விவசாயம்" data-lang-hi="फसलें" data-lang-ml="വിഭവങ്ങൾ" data-lang-kn="ಬೆಳೆಗಳು">Crops</a></li>
+                <li><a href="water.html" data-lang-en="Water&Fertilizer" data-lang-ta="தண்ணீர்" data-lang-hi="पानी" data-lang-ml="വെള്ളം" data-lang-kn="ನೀರು">Water&Fertilizer</a></li>
+                <li><a href="soil.html" data-lang-en="Soil" data-lang-ta="மண்" data-lang-hi="मिट्टी" data-lang-ml="മണ്ണ്" data-lang-kn="ಮಣ್ಣು">Soil</a></li>
+                <li><a href="help.html" data-lang-en="Help" data-lang-ta="உதவி" data-lang-hi="मदद" data-lang-ml="സഹായം" data-lang-kn="ಸಹಾಯ">Help</a></li>
+            </ul>
+            <div class="language-select">
+                <select id="languageSwitcher" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="ta">Tamil</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="kn">Kannada</option>
+                </select>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Content Section -->
+    <main class="content">
+        <h1>Water & Fertilizer Recommendations</h1>
+        
+        <!-- Crop Selection Form -->
+        <section id="cropFormSection">
+            <h2>Get Recommendations</h2>
+            <form id="cropForm">
+                <div class="form-group">
+                    <label for="cropType">Select Crop:</label>
+                    <select id="cropType" name="cropType">
+                        <option value="maize">Maize</option>
+                        <option value="wheat">Wheat</option>
+                        <option value="rice">Rice</option>
+                        <option value="sugarcane">Sugarcane</option>
+                        <option value="cotton">Cotton</option>
+                    </select>
+                </div>
+                <button type="button" class="button button-primary" onclick="getRecommendations()">Get Recommendations</button>
+            </form>
+        </section>
+<h3>Irrigation</h3>
+        <!-- Water & Fertilizer Recommendations -->
+        <section id="recommendations">
+            <div id="waterRecommendation">
+                <!-- Water recommendation will be inserted here -->
+            </div>
+            <h3>Fertilizer</h3>
+            <div id="fertilizerRecommendation">
+                <!-- Fertilizer recommendation will be inserted here -->
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        function toggleNavbar() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('show');
+        }
+
+        function changeLanguage() {
+            const language = document.getElementById('languageSwitcher').value;
+            const elements = document.querySelectorAll('[data-lang-en]');
+            elements.forEach(el => {
+                el.textContent = el.getAttribute(`data-lang-${language}`);
+            });
+        }
+
+        function getRecommendations() {
+            const cropType = document.getElementById('cropType').value;
+
+            // Example real-time data fetched from somewhere
+            const soilData = {
+                npk: { nitrogen: 'Low', phosphorus: 'Moderate', potassium: 'High' },
+                moisture: '40%',
+                pH: '6.5'
+            };
+
+            let waterRecommendation = '';
+            let fertilizerRecommendation = '';
+
+            switch (cropType) {
+                case 'maize':
+                    waterRecommendation = 'Irrigate the crop every 4 days with 50 mm of water.';
+                    fertilizerRecommendation = 'Apply <strong>Potassium-rich fertilizer</strong> to improve yield.';
+                    break;
+                case 'wheat':
+                    waterRecommendation = 'Irrigate the crop every 6 days with 30 mm of water.';
+                    fertilizerRecommendation = 'Apply <strong>Nitrogen-rich fertilizer</strong> for better growth.';
+                    break;
+                case 'rice':
+                    waterRecommendation = 'Keep the field flooded with 10 cm of water during the vegetative stage.';
+                    fertilizerRecommendation = 'Use balanced <strong>NPK fertilizer</strong> based on the soil analysis.';
+                    break;
+                case 'sugarcane':
+                    waterRecommendation = 'Irrigate every 5 days during the summer with 75 mm of water.';
+                    fertilizerRecommendation = 'Use <strong>Phosphorus-rich fertilizer</strong> during planting.';
+                    break;
+                case 'cotton':
+                    waterRecommendation = 'Irrigate every 7 days with 40 mm of water.';
+                    fertilizerRecommendation = 'Apply balanced <strong>NPK fertilizer</strong> at flowering stage.';
+                    break;
+                default:
+                    waterRecommendation = 'Please select a valid crop.';
+                    fertilizerRecommendation = 'No recommendation available.';
+            }
+
+            // Display recommendations in the page
+            document.getElementById('waterRecommendation').innerHTML = waterRecommendation;
+            document.getElementById('fertilizerRecommendation').innerHTML = fertilizerRecommendation;
+
+            // Show the fertilizer recommendation in a pop-up
+            window.alert(fertilizerRecommendation.replace(/<strong>/g, '').replace(/<\/strong>/g, ''));
+        }
+    </script>
+
+
+
+<br><br><br><br><br><br><br>
+<footer style="background-color: #2c3e50; color: white; padding: 20px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;">
+      <!-- Logo and About -->
+      <div style="flex: 1; min-width: 250px; text-align: left;">
+       <h3 style="color: white;">ROOT6IX</h3>
+        <p style="margin-top: 10px;">
+          ROOT6IX is committed to improving agricultural practices with real-time data, expert advice, and user-friendly tools tailored for farmers.
+        </p>
+      </div>
+  
+      <!-- Quick Links -->
+      <div style="flex: 1; min-width: 250px; text-align: center;">
+        <h3>Quick Links</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+          <li><a href="soil.html" style="color: white; text-decoration: none;">Soil Improvement</a></li>
+          <li><a href="weather.html" style="color: white; text-decoration: none;">Weather & Location</a></li>
+          <li><a href="crops.html" style="color: white; text-decoration: none;">Crops</a></li>
+          <li><a href="crops.html" style="color: white; text-decoration: none;">Fertilizers</a></li>
+          <li><a href="help.html" style="color: white; text-decoration: none;">Contact Us</a></li>
+         
+        </ul>
+      </div>
+  
+      <!-- Contact Info -->
+      <div style="flex: 1; min-width: 250px; text-align: right;">
+        <h3>Contact Us</h3>
+        <p>Email: support@root6ix.com</p>
+        <p>Phone: 9898989898</p>
+        <p>Address: Coimbatore,Tamilnadu ,India</p>
+        <div style="margin-top: 10px;">
+          <a href="#" style="margin-right: 10px; color: white; text-decoration: none;">Facebook</a>
+          <a href="#" style="margin-right: 10px; color: white; text-decoration: none;">Twitter</a>
+          <a href="#" style="margin-right: 10px; color: white; text-decoration: none;">Instagram</a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Footer Bottom -->
+    <div style="text-align: center; margin-top: 20px; font-size: 14px;">
+      <p>&copy; 2024 ROOT6IX. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+</body>
+</html>
